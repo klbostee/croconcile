@@ -1,0 +1,29 @@
+{
+  "name": "croconcile",
+  "type": "module",
+  "version": "0.1.7",
+  "license": "MIT",
+  "bin": "dist/cli.cjs",
+  "scripts": {
+    "typecheck": "tsc",
+    "build": "tsup src/cli.ts",
+    "cli": "tsx -r dotenv/config src/cli.ts",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "dotenv": "^16.4.7",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "commander": "^13.0.0",
+    "zod": "^3.24.1"
+  },
+  "files": [
+    "dist/",
+    "LICENSE"
+  ]
+}

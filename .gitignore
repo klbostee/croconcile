@@ -1,0 +1,9 @@
+.env
+node_modules/
+croconfig.json
+incoming-invoices.json
+outgoing-invoices.json
+transactions.json
+deposits-*.json
+withdrawals-*.json
+dist/
