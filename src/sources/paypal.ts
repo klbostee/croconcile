@@ -59,6 +59,11 @@ export class PaypalSource extends Source {
         },
       });
       const data = await response.json();
+
+      if (!data.transaction_details) {
+        break; // stop when we reach an empty page
+      }
+
       for (const datum of data.transaction_details) {
         const transactionInfo = datum.transaction_info;
         const payerInfo = datum.payer_info;
