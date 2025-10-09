@@ -84,10 +84,12 @@ export class PaypalSource extends Source {
             foreignId: transactionInfo.transaction_id,
             amount: transactionAmount + feeAmount,
             currency: transactionInfo.transaction_amount.currency_code,
-            msg: cartInfo.item_details
-              .filter((i: any) => i.item_code)
-              .map((i: any) => i.item_code)
-              .join(","),
+            msg:
+              transactionInfo.invoice_id ||
+              cartInfo.item_details
+                .filter((i: any) => i.item_code)
+                .map((i: any) => i.item_code)
+                .join(","),
             msgIsStructured: false,
             isoTimestamp: new Date(
               transactionInfo.transaction_initiation_date
