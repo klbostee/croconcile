@@ -121,6 +121,19 @@ export class PontoSource extends Source {
       }
     );
     const data = await response.json();
-    return data.data.attributes.status === "success";
+    if (!data?.data) {
+      console.warn(
+        `Ponto synchronization ${refreshId} returned unexpected response; treating as terminal.`
+      );
+      return true;
+    }
+    const status = data.data.attributes?.status;
+    if (status === "error") {
+      console.warn(
+        `Ponto synchronization ${refreshId} ended with status "error"; continuing with possibly stale data.`
+      );
+      return true;
+    }
+    return status === "success";
   }
 }
